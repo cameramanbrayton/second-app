@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\AuthorCollection;
+use App\Http\Resources\AuthorResource;
 use App\Models\Author;
 use Illuminate\Http\Request;
 
@@ -12,7 +14,7 @@ class AuthorController extends Controller
      */
     public function index()
     {
-        //
+        return new AuthorCollection(Author::all());
     }
 
     /**
@@ -20,6 +22,6 @@ class AuthorController extends Controller
      */
     public function show(Author $author)
     {
-        //
+        return new AuthorResource($author);
     }
 }
